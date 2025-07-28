@@ -1,6 +1,7 @@
 const { Kafka } = require('kafkajs');
 
-const kafka = new Kafka({ clientId: 'kitchen-service', brokers: ['localhost:9092'] });
+// const kafka = new Kafka({ clientId: 'kitchen-service', brokers: ['localhost:9092'] });
+const kafka = new Kafka({ clientId: 'kitchen-service', brokers: ['kafka:9092'] });
 const consumer = kafka.consumer({ groupId: 'kitchen-group' });
 const producer = kafka.producer();
 

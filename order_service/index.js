@@ -7,7 +7,8 @@ const app = express();
 app.use(express.json());
 app.use(cors()); // Cho phép frontend gọi API
 
-const kafka = new Kafka({ clientId: 'order-service', brokers: ['localhost:9092'] });
+// const kafka = new Kafka({ clientId: 'order-service', brokers: ['localhost:9092'] });
+const kafka = new Kafka({ clientId: 'order-service', brokers: ['kafka:9092'] });
 const producer = kafka.producer();
 
 app.post('/order', async (req, res) => {

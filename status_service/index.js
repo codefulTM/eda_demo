@@ -3,7 +3,8 @@ const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
 
-const kafka = new Kafka({ clientId: 'status-service', brokers: ['localhost:9092'] });
+// const kafka = new Kafka({ clientId: 'status-service', brokers: ['localhost:9092'] });
+const kafka = new Kafka({ clientId: 'status-service', brokers: ['kafka:9092'] });
 const consumer = kafka.consumer({ groupId: 'status-group' });
 
 const app = express();

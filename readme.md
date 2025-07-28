@@ -3,20 +3,20 @@
 
 # Frontend UI
 - cd frontend
-- node server.js
+- npm run dev
 
 # Order API
-- cd ../order-service
-- node index.js
+- cd ../order_service
+- npm run dev
 
 # Kitchen
-- cd ../kitchen-service
-- node index.js
+- cd ../kitchen_service
+- npm run dev
 
 # Delivery
-- cd ../delivery-service
-- node index.js
+- cd ../delivery_service
+- npm run dev
 
 # Status WebSocket
-- cd ../status-service
-- node index.js
+- cd ../status_service
+- npm run dev
