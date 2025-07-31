@@ -16,20 +16,39 @@ app.post('/order', async (req, res) => {
   const orderId = uuidv4();
 
   await producer.connect();
-  await producer.send({
-    topic: 'order_events',
-    messages: [
-      {
-        key: orderId,
-        value: JSON.stringify({
-          type: 'order_created',
-          orderId,
-          customer,
-          pizza,
-        }),
-      },
-    ],
-  });
+  const random = Math.random() < 0.5 ? 0 : 1;
+  if(random == 0) {
+    await producer.send({
+      topic: 'order_events',
+      messages: [
+        {
+          key: orderId,
+          value: JSON.stringify({
+            type: 'order_rejected',
+            orderId,
+            customer,
+            pizza,
+          }),
+        },
+      ],
+    })
+  }
+  else {
+    await producer.send({
+      topic: 'order_events',
+      messages: [
+        {
+          key: orderId,
+          value: JSON.stringify({
+            type: 'order_created',
+            orderId,
+            customer,
+            pizza,
+          }),
+        },
+      ],
+    });
+  }
   await producer.disconnect();
 
   console.log(`📝 Order created: ${orderId}`);
